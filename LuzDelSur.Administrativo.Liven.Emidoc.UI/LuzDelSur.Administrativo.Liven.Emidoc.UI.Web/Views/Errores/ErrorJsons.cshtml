@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+    var descripcionError = ViewData.Model;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="modal fade" id="Errores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"  style="background-color: #314b75;  color:White;">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <div class="modal-title" id="myModalLabel">Ventana de Errores</div>
+                </div>
+                <div class="modal-body">
+
+                    <ul id="PestañasErroresPopUp" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#Error1">Error Usuario</a></li>
+                        <li role="presentation"><a href="#Error2">Error Detallado</a></li>
+                    </ul>
+                    <div class="tab-content" >
+                        <div role="tabpanel" class="tab-pane fade in active" id="Error1">
+                            <div class="container-fluid">
+                                <textarea class="form-control" style="height:200px" readonly>@descripcionError.mensajeUsuario</textarea>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Error2">
+                            <div class="container-fluid">
+                                <textarea class="form-control" style="height:200px" readonly>@descripcionError.mensajeAplicacion</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #MostrarDetalle:hover {
+            cursor: pointer;
+        }
+		.modal-content{
+			color:#000 !important;
+		}
+        .modal-title {
+            font-size: 18px;
+        }
+        textarea.form-control {
+            resize: none;
+        }
+    </style>
+    <script>
+        $('#PestañasErroresPopUp a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+</body>
+</html>

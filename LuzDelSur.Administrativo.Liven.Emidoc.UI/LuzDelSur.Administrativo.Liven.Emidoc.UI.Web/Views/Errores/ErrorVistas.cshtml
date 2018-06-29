@@ -1,0 +1,66 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = null;
+    var descripcionError = ViewData.Model;
+    var direccionPath = ViewBag.Path;
+    if (direccionPath == "localhost")
+    {
+        direccionPath = "http://dldsweb.luzdelsur.com.pe/";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="@(direccionPath)plataforma/Herramientas/js/JsKendo/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="@(direccionPath)plataforma/herramientas/css/bootstrap/popup/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="@(direccionPath)plataforma/herramientas/css/bootstrap/popup/bootstrap-theme.css">
+    <script src="@(direccionPath)plataforma/herramientas/js/bootstrap/popup/bootstrap.js"></script>
+    <title></title>
+</head>
+<body>
+    <ul id="PestañasErrores" class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#ErrorUsuario">Mensaje</a></li>
+        <li role="presentation"><a href="#ErrorEspecífico">Error Detallado</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="ErrorUsuario">
+            @*<div class="container">*@
+            <div class="text-center">
+                <h1>Disculpe, Se produjo un error!</h1>
+                <h3>Comuníquese con el Área de ...</h3>
+            </div>
+            @*</div>*@
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="ErrorEspecífico">
+            @*<div class="container">*@
+
+            <h4>El error está ubicado en: </h4>
+            <div>Action @descripcionError.ActionName </div>
+            <div>Controlador @descripcionError.ControllerName </div>
+
+            <h4>Mensaje de error:</h4>
+            <div>@descripcionError.Exception.Message</div>
+
+            <h4>El error detallado es:</h4>
+            <div>@descripcionError.Exception.StackTrace</div>
+            @*</div>*@
+        </div>
+    </div>
+
+    <style>
+        body {
+            background-color: lavender !important;
+            padding: 20px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $('#PestañasErrores a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+</body>
+</html>

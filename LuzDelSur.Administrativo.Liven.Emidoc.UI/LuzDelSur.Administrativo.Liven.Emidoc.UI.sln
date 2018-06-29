@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzDelSur.Administrativo.Liven.Emidoc.UI.Web", "LuzDelSur.Administrativo.Liven.Emidoc.UI.Web\LuzDelSur.Administrativo.Liven.Emidoc.UI.Web.csproj", "{B8A39E5D-7CA5-4CB5-AADA-FA7C3B56E53E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger", "LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger.csproj", "{0B3CD469-C3B5-4074-9C94-7756A3814142}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8A39E5D-7CA5-4CB5-AADA-FA7C3B56E53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A39E5D-7CA5-4CB5-AADA-FA7C3B56E53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A39E5D-7CA5-4CB5-AADA-FA7C3B56E53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A39E5D-7CA5-4CB5-AADA-FA7C3B56E53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B3CD469-C3B5-4074-9C94-7756A3814142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3CD469-C3B5-4074-9C94-7756A3814142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3CD469-C3B5-4074-9C94-7756A3814142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3CD469-C3B5-4074-9C94-7756A3814142}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

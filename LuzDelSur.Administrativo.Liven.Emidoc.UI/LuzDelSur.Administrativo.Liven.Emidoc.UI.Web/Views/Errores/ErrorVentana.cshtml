@@ -1,0 +1,29 @@
+﻿@{
+    var descripcionError = ViewData.Model;
+    var local = ViewBag.Path;
+    if (local == "localhost")
+    {
+        local = "http://dldsweb.luzdelsur.com.pe";
+    }
+    else
+    {
+        local = "";
+    }
+}
+<!DOCTYPE html>
+<html style="background: #445684">
+<head>
+    <meta charset="UTF-8">
+    <title>Ventana de Errores</title>
+</head>
+<body>
+    <div style="color: #fff; margin: 100px auto; width: 470px; font-size: 18px; ">
+        <div style="text-align:center">
+            <img id="imgLock" src='@(local)/plataforma/herramientas/imagenes/candado.png' />
+            <h3>@descripcionError</h3>
+        </div>
+    </div>
+    <script>
+    </script>
+</body>
+</html>

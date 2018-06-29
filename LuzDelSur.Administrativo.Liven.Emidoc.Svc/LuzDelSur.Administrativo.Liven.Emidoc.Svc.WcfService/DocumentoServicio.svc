@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="LuzDelSur.Administrativo.Liven.Emidoc.Svc.WcfService.DocumentoServicio" CodeBehind="DocumentoServicio.svc.cs" %>

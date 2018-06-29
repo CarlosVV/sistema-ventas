@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+    var mensaje = ViewData.Model;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="modal fade bs-example-modal-sm" id="alerta" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="color:#000">
+                <div class="modal-body">
+                    @mensaje
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #alerta .modal-content {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-Serif !important;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 300;
+            color: #000;
+        }
+    </style>
+</body>
+</html>

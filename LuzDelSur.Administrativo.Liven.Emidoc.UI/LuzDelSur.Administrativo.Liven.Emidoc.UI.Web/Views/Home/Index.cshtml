@@ -1,0 +1,332 @@
+﻿@{
+    ViewBag.Title = "DisenoNuevo";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<style>
+    .modal-body p
+    {
+        font-size: 11pt;
+    }
+</style>
+<script type="text/javascript">
+    function presiono() {
+        if (document.getElementById('txtNumeroCliente').value.length == 0) {
+            $('#btnCancelar').html('Cerrar');
+        } else {
+            $('#btnCancelar').html('Cancelar');
+        }
+    }
+    function Enter(e) {
+        if (e.code == "NumpadEnter" || e.code == "Enter") {
+            $("#hdControlFocus").val(e.currentTarget.id);
+            $("#btnActualizar").focus();
+            $("#btnActualizar").click();
+           
+        }
+    }
+    function valida(e) {
+        if (e.currentTarget.id == "txtNumeroCliente") {
+            if (e.code == "NumpadEnter" || e.code == "Enter") {
+                $("#" + $("#hdControlFocus").val()).focus();
+                $("#btnLeer").click();
+               
+            }
+        } else {
+            if (e.code == "NumpadEnter" || e.code == "Enter") {
+                $("#hdControlFocus").val(e.currentTarget.id);
+                $("#btnActualizar").focus();
+                $("#btnActualizar").click();
+               
+            }
+
+        }
+        tecla = (document.all) ? e.keyCode : e.which;
+        //Tecla de retroceso para borrar, siempre la permite
+        if (tecla == 8) {
+        }
+        // Patron de entrada, en este caso solo acepta numeros
+        patron = /[0-9]/;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    }
+    var Mensaje = "";
+    $(document).ready(function () {
+        Banco('');
+        $('#cboEntidad').click(function (event) {
+            if ($("#cboEntidad").val() != "0") {
+                $("#txtBanco").val($("#cboEntidad").val());
+            } else {
+                $("#txtBanco").val('');
+            }
+
+
+        });
+        $('#btnCargando').click(function (event) {
+            $("#frmCargando .modal-content").css('height', '270');
+            $("#frmCargando .modal-smm").css('width', '310px');
+            $("#frmCargando").modal("show");
+        });
+        var intcuento = 0;
+        $("#txtBanco").focusout(function () {
+            if (document.getElementById('txtBanco').value.length == 4) {
+
+                if ($('#hfA').val().indexOf(document.getElementById('txtBanco').value) != -1) {
+                    $('#id' + document.getElementById('txtBanco').value).attr('selected', 'selected');
+                } else {
+                    if (document.getElementById('txtBanco').value.length != 0) {
+                        var imagen = "<img src='" + rutaProyecto + "iconos/Warningsign.png'/>";
+                        var salto = "<br/>";
+                        var mensaje = "<p>No existe entidad bancaria.</p>";
+                        var boton = "<a class='btn btn-info' id='btnOk'>OK</a>";
+                        $("#FrmValidacion .modal-body").html(imagen + salto + salto + mensaje);
+                        $("#FrmValidacion").modal("show");
+                        $("#cboEntidad").val("0");
+                        $("#txtBanco").focus();
+                    }
+
+                }
+            } else {
+                if (document.getElementById('txtBanco').value.length != 0) {
+                    if (intcuento == 0 && $("#btnActualizar").html() == "Actualizar") {
+                        var imagen = "<img src='" + rutaProyecto + "iconos/Warningsign.png'/>";
+
+                        var salto = "<br/>";
+                        var mensaje = "<p>No existe entidad bancaria.</p>";
+                        var boton = "<a class='btn btn-info' id='btnOk'>OK</a>";
+                        $("#FrmValidacion .modal-body").html(imagen + salto + salto + mensaje);
+                        $("#FrmValidacion").modal("show");
+                        $("#cboEntidad").val("0");
+                        $("#txtBanco").val('');
+                        $("#txtBanco").focus();
+                        intcuento = intcuento + 1;
+                    } else {
+                        var imagen = "<img src='" + rutaProyecto + "iconos/Warningsign.png'/>";
+                        var salto = "<br/>";
+                        var mensaje = "<p>No existe entidad bancaria.</p>";
+                        var boton = "<a class='btn btn-info' id='btnOk'>OK</a>";
+                        $("#FrmValidacion .modal-body").html(imagen + salto + salto + mensaje);
+                        $("#FrmValidacion").modal("show");
+                        //                    Banco('0');
+                        $("#cboEntidad").val("0");
+                        $("#txtBanco").focus();
+                    }
+
+                }
+            }
+        });       
+        $("#btnActualizar").on("click", function () {
+            if ($('#hfidCliente').val() != "") {
+                GuardarPagoAutomatico();
+            }
+        });
+        $("#btnOk").on("click", function () {
+            $("#FrmValidacion").modal("hide");
+            $('#' + $("#hdControlFocus").val()).focus();
+        });
+        $("#btnCancelar").on("click", function () {
+            if ($("#btnCancelar").html() == "Cerrar") {
+                $("#txtNumeroCliente").focus();
+            } else {
+                $('#txtNumeroCliente').removeAttr('disabled');
+                $('#btnLeer').removeAttr('disabled');
+                $('#txtNumeroCliente').val('');
+                $('#lblRutaCliente').html('');
+                $('#lblNombreCliente').html('');
+                document.getElementById('chtActivo').checked = false;
+                $('#chtActivo').attr('disabled', 'disabled');
+                $('#txtBanco').val('');
+                $('#txtBanco').attr('disabled', 'disabled');
+                $('#cboEntidad').val('0');
+                $('#cboEntidad').attr('disabled', 'disabled');
+                $('#btnActualizar').attr('disabled', 'disabled');
+                $('#txtCuentaCorriente').attr('disabled', 'disabled');
+                $('#txtCuentaCorriente').val('');
+                $('#txtFechaActivacion').attr('disabled', 'disabled');
+                $('#txtFechaActivacion').val('');
+                $('#txtFechaDesactivacion').attr('disabled', 'disabled');
+                $('#txtFechaDesactivacion').val('');
+                $('#btnCancelar').html('Cerrar');
+                $("#txtNumeroCliente").focus();
+                intcuento = 0;
+            }
+        });
+
+        $("#btnGuardar").on("click", function () {
+            Registrar();
+        });
+        $("#btnModificar").on("click", function () {
+            Modificar();
+        });
+        $("#btnLeer").on("click", function () {
+            if ($("#txtNumeroCliente").val() == "") {
+                var imagen = "<img src='" + rutaProyecto + "iconos/Warningsign.png'/>";
+
+                var salto = "<br/>";
+                var mensaje = "<p>Ingrese número de cliente.</p>";
+                var boton = "<a class='btn btn-info' id='btnOk'>OK</a>";
+                $("#FrmValidacion .modal-body").html(imagen + salto + salto + mensaje);
+                $("#FrmValidacion").modal("show");
+                $("#hdControlFocus").val("txtNumeroCliente");
+            } else {
+                if ($("#txtNumeroCliente").val() == "0") {
+                    var imagen = "<img src='" + rutaProyecto + "iconos/Warningsign.png'/>";
+                    var salto = "<br/>";
+                    var mensaje = "<p>Cliente no existe en maestro Cliente.</p>";
+                    var boton = "<a class='btn btn-info' id='btnOk'>OK</a>";
+                    $(".modal-smm").css('width', '300px');
+                    $("#FrmValidacion .modal-body").html(imagen + salto + salto + mensaje);
+                    $("#FrmValidacion").modal("show");
+                    $("#txtNumeroCliente").val("");
+                    $("#hdControlFocus").val("txtNumeroCliente");
+                } else {
+                    CargaPagoAutomatico();
+                    $('#' + $("#hdControlFocus").val()).focus();
+                }
+
+            }
+        });
+        $("#btnCerrar").on("click", function () {
+            $("#FrmValidacion").modal("hide");
+            $("#txtNumeroCliente").focus();
+        });
+    });
+</script>
+<input type="hidden" value="" id="hdControl" />
+<input type="hidden" value="" id="hdControlFocus" />
+<input type="hidden" value="" id="hfidCliente" />
+<input type="hidden" value="" id="hfA" />
+<input type="hidden" value="" id="hfClavePagAut" />
+<input type="hidden" id="hfNumeroCliente" />
+<input type="hidden" id="hfCodCuenta" />
+<input type="hidden" id="hfBanco" />
+<input type="hidden" id="hfValidacion" />
+<center>
+    
+    <form class="form-horizontal" style="width: 50%; color: #424242;">
+    <div class="panel panel-default">
+       <div class="panel-heading" style="background-color: #314b75;">
+            <h2 style="color: white;">
+                Consulta y Emisión de Documentos (EMIDOC) </h2>
+        </div>
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-4 control-label" for="txtNumeroCliente">
+                            Numero Cliente</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtNumeroCliente" maxlength="8" onkeypress="return valida(event)"
+                                onkeyup="return presiono()" />
+                        </div>
+                        <div class="col-sm-7">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-4 control-label" for="formGroupInputSmall"
+                            id="lblRuta_Cliente">
+                            Ruta Lectura</label>
+                        <label style="text-align: left;" class="col-sm-8 control-label" for="formGroupInputSmall"
+                            id="lblRutaCliente">
+                        </label>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-4 control-label" for="formGroupInputSmall"
+                            id="lblNombre_Cliente">
+                            Nombre Cliente</label>
+                        <label style="text-align: left;" class="col-sm-8 control-label" for="formGroupInputSmall"
+                            id="lblNombreCliente">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-3 control-label" for="txtNumeroCliente">
+                            Activo</label>
+                        <div class="col-sm-1">
+                            <input type="checkbox" id="chtActivo" onchange="javascript:CambioChecked();" disabled="disabled" />
+                        </div>
+                        <div class="col-sm-7">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-3 control-label" for="txtBanco">
+                            Banco</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" id="txtBanco" disabled="disabled" maxlength="4"
+                                onkeypress="return valida(event)" />
+                        </div>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="cboEntidad" disabled="disabled" onkeypress="Enter(event);">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-3 control-label" for="txtCuentaCorriente"
+                            id="lblCuenta_Corriente">
+                            Cuenta Corriente</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" id="txtCuentaCorriente" disabled="disabled"
+                                maxlength="20" onkeypress="return valida(event)" />
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-3 control-label" for="txtFechaActivacion">
+                            Fecha Activación</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" id="txtFechaActivacion" disabled="disabled"
+                                onkeypress="Enter(event);" />
+                        </div>
+                        <div class="col-sm-5">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label style="text-align: left;" class="col-sm-3 control-label" for="txtFechaDesactivacion">
+                            Fecha Desactivac.</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" id="txtFechaDesactivacion" disabled="disabled"
+                                onkeypress="Enter(event);" />
+                        </div>
+                        <div class="col-sm-5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-info col-sm-12" id="btnLeer" href="#">Leer</a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-success col-sm-12" id="btnActualizar" href="#" disabled="disabled">
+                        Actualizar</a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-danger col-sm-12" id="btnCancelar" href="#">Cerrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</center>
+<!-- BEGIN LARGE TEXT MODAL MARKUP -->
+<div class="modal fade " id="FrmValidacion" tabindex="-1" role="dialog" aria-labelledby="textModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-smm">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">                
+            </div>
+            <div class="modal-footer" style="text-align: center; border: 0px solid black; margin-top: 0px;">
+                <a href="#" class="btn btn-info" id="btnOk">Aceptar</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- END LARGE TEXT MODAL MARKUP -->

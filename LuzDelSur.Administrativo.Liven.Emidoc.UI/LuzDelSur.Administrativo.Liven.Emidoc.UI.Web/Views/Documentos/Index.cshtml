@@ -1,0 +1,19 @@
+﻿@model IEnumerable<LuzDelSur.Administrativo.Liven.Svc.WcfInterface.Entities.BEDocumento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<input type="text" id="nrodocumento"/>
+<button type="submit">Buscar</button>
+<table>
+
+@foreach (var item in Model) { 
+    <tr>
+    <td>item.NroDocumento</td>
+    </tr>
+}
+
+</table>

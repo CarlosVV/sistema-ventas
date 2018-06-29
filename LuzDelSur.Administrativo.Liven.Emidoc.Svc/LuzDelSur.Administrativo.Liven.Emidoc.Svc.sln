@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzDelSur.Administrativo.Liven.Emidoc.Svc.WcfInterface", "LuzDelSur.Administrativo.Liven.Emidoc.Svc.WcfInterface\LuzDelSur.Administrativo.Liven.Emidoc.Svc.WcfInterface.csproj", "{1A216B3F-E0D5-4539-8119-E26B6674333A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzDelSur.Administrativo.Liven.Emidoc.Svc.DataAccess", "LuzDelSur.Administrativo.Liven.Emidoc.Svc.DataAccess\LuzDelSur.Administrativo.Liven.Emidoc.Svc.DataAccess.csproj", "{E692710A-6B2D-4F6A-8B7C-84F689FE29CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzDelSur.Administrativo.Liven.Emidoc.Svc.Business", "LuzDelSur.Administrativo.Liven.Emidoc.Svc.Business\LuzDelSur.Administrativo.Liven.Emidoc.Svc.Business.csproj", "{D276A814-ED01-4F7D-86BF-03EAADFBE397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzDelSur.Administrativo.Liven.Emidoc.Svc.WcfService", "LuzDelSur.Administrativo.Liven.Emidoc.Svc.WcfService\LuzDelSur.Administrativo.Liven.Emidoc.Svc.WcfService.csproj", "{98BC7AE7-6DE5-4ACC-8596-466B98CCD878}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A216B3F-E0D5-4539-8119-E26B6674333A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A216B3F-E0D5-4539-8119-E26B6674333A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A216B3F-E0D5-4539-8119-E26B6674333A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A216B3F-E0D5-4539-8119-E26B6674333A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E692710A-6B2D-4F6A-8B7C-84F689FE29CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E692710A-6B2D-4F6A-8B7C-84F689FE29CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E692710A-6B2D-4F6A-8B7C-84F689FE29CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E692710A-6B2D-4F6A-8B7C-84F689FE29CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D276A814-ED01-4F7D-86BF-03EAADFBE397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D276A814-ED01-4F7D-86BF-03EAADFBE397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D276A814-ED01-4F7D-86BF-03EAADFBE397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D276A814-ED01-4F7D-86BF-03EAADFBE397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98BC7AE7-6DE5-4ACC-8596-466B98CCD878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98BC7AE7-6DE5-4ACC-8596-466B98CCD878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98BC7AE7-6DE5-4ACC-8596-466B98CCD878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98BC7AE7-6DE5-4ACC-8596-466B98CCD878}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

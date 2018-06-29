@@ -1,0 +1,4 @@
+G:\lds.emidoc\LuzDelSur.Administrativo.Liven.Emidoc.UI\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger\bin\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger.dll
+G:\lds.emidoc\LuzDelSur.Administrativo.Liven.Emidoc.UI\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger\bin\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger.pdb
+G:\lds.emidoc\LuzDelSur.Administrativo.Liven.Emidoc.UI\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger\obj\Debug\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger.dll
+G:\lds.emidoc\LuzDelSur.Administrativo.Liven.Emidoc.UI\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger\obj\Debug\LuzDelSur.Administrativo.Liven.Emidoc.UI.MiDebugger.pdb

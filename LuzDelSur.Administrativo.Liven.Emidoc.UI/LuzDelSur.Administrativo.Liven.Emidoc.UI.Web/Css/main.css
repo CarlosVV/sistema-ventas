@@ -1,0 +1,18 @@
+
+#jumbotron {
+    background: url("../img/bk_body.jpg") repeat scroll 0 0 transparent !important;
+}
+.lead {
+    font-size: 16px;
+}
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+}
+
+.jumbotron {
+    padding-bottom: 20px !important;
+    padding-top: 20px !important;
+}
+
